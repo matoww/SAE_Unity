@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ButtonQuitter:MonoBehaviour
+public class ButtonQuitterBehaviour:MonoBehaviour
 {
     public void OnclickQuitter()
     {
