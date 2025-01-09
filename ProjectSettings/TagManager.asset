@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Ennemie
   - ZoneDeMort
+  - head
+  - ground
+  - bonus
+  - malus
+  - banane
   layers:
   - Default
   - TransparentFX

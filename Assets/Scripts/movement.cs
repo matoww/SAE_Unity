@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class Mouvement : MonoBehaviour
 {
     public float speed = 5.0f;
@@ -8,10 +10,21 @@ public class Mouvement : MonoBehaviour
     public float bonusEffect = 2.0f; // Facteur multiplicateur pour les bonus
     public float malusEffect = 0.5f; // Facteur multiplicateur pour les malus
     public float headBounceForce = 50.0f; // Force de rebond pour les objets "Head"
+    public int banane = 0;
+    public Point point; 
 
     // Paramètres pour le contrôle de la caméra
     public float mouseSensitivity = 100.0f;
     private float rotationX = 0.0f;
+
+    void Start()
+    {
+
+        if (point == null)
+        {
+            Debug.LogError("Le script Point n'est pas assigné dans l'inspecteur !");
+        }
+    }
 
     void Update()
     {
@@ -27,6 +40,7 @@ public class Mouvement : MonoBehaviour
             GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
+
 
         // Rotation avec la souris
         RotateWithMouse();
@@ -72,6 +86,13 @@ public class Mouvement : MonoBehaviour
         {
             speed *= malusEffect;
             jumpForce *= malusEffect;
+            Destroy(other.gameObject); // Supprime l'objet après l'effet
+        }
+        if (other.CompareTag("banane"))
+        {
+            banane += 1;
+            point.setBanane(banane);
+            Debug.Log(banane);
             Destroy(other.gameObject); // Supprime l'objet après l'effet
         }
     }
