@@ -17,14 +17,7 @@ public class Mouvement : MonoBehaviour
     public float mouseSensitivity = 100.0f;
     private float rotationX = 0.0f;
 
-    void Start()
-    {
-
-        if (point == null)
-        {
-            Debug.LogError("Le script Point n'est pas assigné dans l'inspecteur !");
-        }
-    }
+ 
 
     void Update()
     {
