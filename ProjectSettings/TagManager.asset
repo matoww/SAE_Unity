@@ -12,6 +12,7 @@ TagManager:
   - malus
   - banane
   - SpawnPoint
+  - plateformeMouvante
   layers:
   - Default
   - TransparentFX

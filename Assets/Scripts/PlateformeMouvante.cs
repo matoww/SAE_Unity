@@ -33,7 +33,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             float distanceY = this.positionArrive.y - this.transform.position.y;
             float distanceZ = this.positionArrive.z - this.transform.position.z;
             float distanceX = this.positionArrive.x - this.transform.position.x;
-            if (distanceY + distanceZ + distanceX < 0.0003 && distanceY + distanceZ + distanceX > -0.0003)
+            if (distanceY + distanceZ + distanceX < 0.03 && distanceY + distanceZ + distanceX > -0.03)
             {
                 transform.position = positionArrive;
                 aller = false;
@@ -49,7 +49,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             float distanceY = this.positionBase.y - this.transform.position.y;
             float distanceZ = this.positionBase.z - this.transform.position.z;
             float distanceX = this.positionBase.x - this.transform.position.x;
-            if (distanceY + distanceZ + distanceX < 0.0003 && distanceY + distanceZ + distanceX > -0.0003)
+            if (distanceY + distanceZ + distanceX < 0.0003 && distanceY + distanceZ + distanceX > -0.03)
             {
                 transform.position = positionBase;
                 aller = true;  
