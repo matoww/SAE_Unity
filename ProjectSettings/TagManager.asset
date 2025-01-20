@@ -11,6 +11,7 @@ TagManager:
   - bonus
   - malus
   - banane
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

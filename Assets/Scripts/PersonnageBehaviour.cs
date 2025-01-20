@@ -10,20 +10,34 @@ public class PersonnageBehaviour : MonoBehaviour
     public float timerInvicibility = 0;
     public GameObject ecranDeDefaite;
     public float vitesseY = 0;
+    Animator animator;
+    int isWalkingHash;
     void Start()
     {
+        animator = GetComponent<Animator>();
+        isWalkingHash = Animator.StringToHash("isWalking");
         ecranDeDefaite.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        bool isWalking = animator.GetBool(isWalkingHash);
+        bool keyZInput=Input.GetKey(KeyCode.Z);
         if (timerInvicibility > 0)
         {
             timerInvicibility -= Time.deltaTime;
         }
         if (GetComponent<Rigidbody>().linearVelocity.y < vitesseY) {
             vitesseY = GetComponent<Rigidbody>().linearVelocity.y;
+        }
+        if (keyZInput && !isWalking)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        if (!keyZInput && isWalking)
+        { 
+            animator.SetBool("isWalking",false);
         }
     }
     public void OnCollisionEnter(Collision collision)
@@ -59,7 +73,7 @@ public class PersonnageBehaviour : MonoBehaviour
             timerInvicibility = 2;
             vitesseY = 0;
         }
-        if (nbVie == 0 || collision.gameObject.tag == "ZoneDeMort")
+        if (nbVie == 0)
         {
             ecranDeDefaite.SetActive(true);
             GameObject respawnButton = GameObject.Find("BoutonRespawn");
@@ -89,7 +103,7 @@ public class PersonnageBehaviour : MonoBehaviour
             timerInvicibility = 2;
             vitesseY = 0;
         }
-        if (nbVie == 0 || collision.gameObject.tag == "ZoneDeMort")
+        if (nbVie == 0)
         {
             ecranDeDefaite.SetActive(true);
             GameObject respawnButton = GameObject.Find("BoutonRespawn");
@@ -114,7 +128,7 @@ public class PersonnageBehaviour : MonoBehaviour
             timerInvicibility = 2;
             vitesseY = 0;
         }
-        if (nbVie == 0 || collision.gameObject.tag == "ZoneDeMort")
+        if (nbVie == 0)
         {
             ecranDeDefaite.SetActive(true);
             GameObject respawnButton = GameObject.Find("BoutonRespawn");
@@ -124,6 +138,25 @@ public class PersonnageBehaviour : MonoBehaviour
                 nbVie = 3;
                 ecranDeDefaite.SetActive(false);
             });
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "ZoneDeMort")
+        {
+            ecranDeDefaite.SetActive(true);
+            GameObject respawnButton = GameObject.Find("BoutonRespawn");
+            respawnButton.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                Respawn.respawnGameObject(gameObject, respawn);
+                nbVie = 3;
+                ecranDeDefaite.SetActive(false);
+            });
+        }
+        if(other.gameObject.tag == "SpawnPoint")
+        {
+            respawn = other.gameObject.transform.position;
         }
     }
 }
