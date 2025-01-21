@@ -11,16 +11,27 @@ public class Mouvement : MonoBehaviour
     public float malusEffect = 0.5f; // Facteur multiplicateur pour les malus
     public float headBounceForce = 50.0f; // Force de rebond pour les objets "Head"
     public int banane = 0;
-    public Point point; 
-
+    public Point point;
+    private float maxSpeed;
+    private float maxJumpForce;
+    private float minSpeed;
+    private float minJumpForce;
     // Paramètres pour le contrôle de la caméra
     public float mouseSensitivity = 100.0f;
     private float rotationX = 0.0f;
 
- 
+   void Start()
+    {
+        Debug.Log(maxSpeed);
+        maxSpeed = speed * 3;
+        maxJumpForce = jumpForce * 3;
+        minSpeed = speed / 3;
+        minJumpForce = jumpForce / 3;
+    }
 
     void Update()
     {
+        
         // Mouvement du joueur
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -39,7 +50,6 @@ public class Mouvement : MonoBehaviour
         // Rotation avec la souris
         RotateWithMouse();
     }
-
     private void RotateWithMouse()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -97,4 +107,54 @@ public class Mouvement : MonoBehaviour
 
         }
     }
+    
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
+    public float JumpForce
+    {
+        get { return jumpForce; }
+        set { jumpForce = value; }
+    }
+
+    public float BonusEffect
+    {
+        get { return bonusEffect; }
+        set { bonusEffect = value; }
+    }
+
+    public float MalusEffect
+    {
+        get { return malusEffect; }
+        set { malusEffect = value; }
+    }
+
+    public float MaxSpeed
+    {
+        get { return maxSpeed; }
+        set { maxSpeed = value; }
+    }
+
+    public float MaxJumpForce
+    {
+        get { return maxJumpForce; }
+        set { maxJumpForce = value; }
+    }
+
+    public float MinSpeed
+    {
+        get { return minSpeed; }
+        set { minSpeed = value; }
+    }
+
+    public float MinJumpForce
+    {
+        get { return minJumpForce; }
+        set { minJumpForce = value; }
+    }
+
+
 }

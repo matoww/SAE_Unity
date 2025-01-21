@@ -1,29 +1,48 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+
 
 public class PersonnageBehaviour : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public int nbVie=3;
+    public int nbVie = 3;
     public Vector3 respawn;
     float timerInvicibility = 0;
     public GameObject ecranDeDefaite;
     float vitesseY = 0;
     Animator animator;
     int isWalkingHash;
+    public Mouvement mouvement;
+    private float originalSpeed;
+    private float originalJumpForce;
+    private float maxSpeed;
+    private float maxJumpForce;
+    private float minSpeed;
+    private float minJumpForce;
+    private Coroutine currentBonusCoroutine;
+    private Coroutine currentMalusCoroutine;
+
+
     void Start()
     {
         /*animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");*/
         ecranDeDefaite.SetActive(false);
+        originalSpeed = mouvement.Speed;
+        originalJumpForce = mouvement.JumpForce;
+        maxJumpForce = mouvement.MaxJumpForce;
+        maxSpeed = mouvement.MaxSpeed;
+        minSpeed = mouvement.MinSpeed;
+        minJumpForce = mouvement.MinJumpForce;
     }
 
     // Update is called once per frame
     void Update()
     {
         //bool isWalking = animator.GetBool(isWalkingHash);
-        bool keyZInput=Input.GetKey(KeyCode.Z);
+        bool keyZInput = Input.GetKey(KeyCode.Z);
         if (timerInvicibility > 0)
         {
             timerInvicibility -= Time.deltaTime;
@@ -31,6 +50,7 @@ public class PersonnageBehaviour : MonoBehaviour
         if (GetComponent<Rigidbody>().linearVelocity.y < vitesseY) {
             vitesseY = GetComponent<Rigidbody>().linearVelocity.y;
         }
+        
         /*
         if (keyZInput && !isWalking)
         {
@@ -40,6 +60,91 @@ public class PersonnageBehaviour : MonoBehaviour
         { 
             animator.SetBool("isWalking",false);
         }*/
+
+    }
+    private IEnumerator TemporaryBonusEffect()
+    {
+
+        if (currentBonusCoroutine != null)
+        {
+            StopCoroutine(currentBonusCoroutine);
+
+        }
+
+        if (mouvement.Speed * mouvement.BonusEffect < maxSpeed && mouvement.JumpForce * mouvement.BonusEffect < maxJumpForce && currentMalusCoroutine == null)
+        {
+            mouvement.Speed *= mouvement.BonusEffect;
+            mouvement.JumpForce *= mouvement.BonusEffect;
+
+            yield return new WaitForSeconds(3);
+
+            mouvement.Speed = originalSpeed;
+            mouvement.JumpForce = originalJumpForce;
+        }
+        else if (currentMalusCoroutine == null)
+        {
+            {
+
+                mouvement.Speed = maxSpeed;
+                mouvement.JumpForce = maxJumpForce;
+
+                yield return new WaitForSeconds(3);
+
+            }
+            if (currentMalusCoroutine != null)
+            {
+                StopCoroutine(currentMalusCoroutine);
+            }
+            ResetToOriginalValues();
+        }
+    }
+
+    private void ResetToOriginalValues()
+    {
+        mouvement.Speed = originalSpeed;
+        mouvement.JumpForce = originalJumpForce;
+
+    }
+    public void ActivateBonus()
+    {
+
+        currentBonusCoroutine = StartCoroutine(TemporaryBonusEffect());
+    }
+    private IEnumerator TemporaryMalusEffect() {
+
+        if (currentMalusCoroutine != null)
+        {
+            StopCoroutine(currentMalusCoroutine);
+
+        }
+        if (mouvement.Speed * mouvement.MalusEffect > minSpeed && mouvement.JumpForce * mouvement.MalusEffect > maxJumpForce && currentBonusCoroutine == null)
+        {
+            mouvement.Speed *= mouvement.MalusEffect;
+            mouvement.JumpForce *= mouvement.MalusEffect;
+
+            yield return new WaitForSeconds(3);
+
+            mouvement.Speed = originalSpeed;
+            mouvement.JumpForce = originalJumpForce;
+        }
+        else if (currentBonusCoroutine == null)
+        {
+            mouvement.Speed = minSpeed;
+            mouvement.JumpForce = minJumpForce;
+
+            yield return new WaitForSeconds(3);
+        }
+
+        if (currentBonusCoroutine != null)
+        {
+            StopCoroutine(currentBonusCoroutine);
+        }
+        ResetToOriginalValues();
+    }
+    public void ActivateMalus()
+    {
+
+        currentMalusCoroutine = StartCoroutine(TemporaryMalusEffect());
     }
     public void OnCollisionEnter(Collision collision)
     {
@@ -78,12 +183,14 @@ public class PersonnageBehaviour : MonoBehaviour
         {
             nbVie -= 1;
             timerInvicibility = 2;
+            ActivateMalus();
             Debug.Log(nbVie);
         }
         if (vitesseY < -10)
         {
             nbVie -= 1;
             timerInvicibility = 2;
+            ActivateMalus();
             vitesseY = 0;
         }
         if (nbVie == 0)
@@ -104,16 +211,19 @@ public class PersonnageBehaviour : MonoBehaviour
         if(collision.gameObject.tag =="Ennemie" && partieEnnemieTouche.transform.parent.name == "Tete")
         {
             collision.gameObject.SetActive(false);
+            ActivateBonus();
         }
         else if (collision.gameObject.tag == "Ennemie" && timerInvicibility <= 0)
         {
             nbVie -= 1;
             timerInvicibility = 2;
+            ActivateMalus();
         }
         if (vitesseY < -10)
         {
             nbVie -= 1;
             timerInvicibility = 2;
+           ActivateMalus();
             vitesseY = 0;
         }
         if (nbVie == 0)
@@ -134,12 +244,14 @@ public class PersonnageBehaviour : MonoBehaviour
         {
             nbVie -= 1;
             timerInvicibility = 2;
+            StartCoroutine(TemporaryMalusEffect());
         }
         if (vitesseY < -10)
         {
             nbVie -= 1;
             timerInvicibility = 2;
             vitesseY = 0;
+            StartCoroutine(TemporaryMalusEffect());
         }
         if (nbVie == 0)
         {
