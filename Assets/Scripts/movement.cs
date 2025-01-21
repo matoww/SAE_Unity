@@ -26,6 +26,7 @@ public class Mouvement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(horizontal, 0, vertical) * speed * Time.deltaTime;
         transform.Translate(movement);
+        
 
         // Saut
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -66,8 +67,11 @@ public class Mouvement : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
+      
+
         if (other.CompareTag("bonus"))
         {
             speed *= bonusEffect;
@@ -81,12 +85,16 @@ public class Mouvement : MonoBehaviour
             jumpForce *= malusEffect;
             Destroy(other.gameObject); // Supprime l'objet après l'effet
         }
+
         if (other.CompareTag("banane"))
         {
+          
             banane += 1;
             point.setBanane(banane);
             Debug.Log(banane);
             Destroy(other.gameObject); // Supprime l'objet après l'effet
+
+
         }
     }
 }
