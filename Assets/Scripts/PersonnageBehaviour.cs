@@ -151,6 +151,7 @@ public class PersonnageBehaviour : MonoBehaviour
                 nbVie = 3;
                 ecranDeDefaite.SetActive(false);
             });
+            Debug.Log("onclickActivé");
         }
     }
 
