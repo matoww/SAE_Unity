@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4179105530239187659}
   - component: {fileID: -4622144649543969066}
   - component: {fileID: 857135576987578993}
+  - component: {fileID: -9053159892687394205}
   m_Layer: 0
   m_Name: Joueur
   m_TagString: Player
@@ -77,9 +78,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbVie: 3
   respawn: {x: 0, y: 10, z: 0}
-  timerInvicibility: 0
   ecranDeDefaite: {fileID: 0}
-  vitesseY: 0
+--- !u!114 &-9053159892687394205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139577078676081119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82b88747a8454a4b877574cae4d6903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpForce: 10
+  bonusEffect: 2
+  malusEffect: 0.5
+  headBounceForce: 50
+  banane: 0
+  point: {fileID: 0}
+  mouseSensitivity: 100
 --- !u!1 &3094657881398307916
 GameObject:
   m_ObjectHideFlags: 0

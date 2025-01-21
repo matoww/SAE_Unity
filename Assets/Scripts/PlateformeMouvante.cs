@@ -7,6 +7,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     Vector3 positionBase;
     public Vector3 positionArrive;
     Boolean aller = true;
+    public float approximation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,7 +34,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             float distanceY = this.positionArrive.y - this.transform.position.y;
             float distanceZ = this.positionArrive.z - this.transform.position.z;
             float distanceX = this.positionArrive.x - this.transform.position.x;
-            if (distanceY + distanceZ + distanceX < 0.03 && distanceY + distanceZ + distanceX > -0.03)
+            if (distanceY + distanceZ + distanceX < approximation && distanceY + distanceZ + distanceX > -approximation)
             {
                 transform.position = positionArrive;
                 aller = false;
@@ -49,7 +50,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             float distanceY = this.positionBase.y - this.transform.position.y;
             float distanceZ = this.positionBase.z - this.transform.position.z;
             float distanceX = this.positionBase.x - this.transform.position.x;
-            if (distanceY + distanceZ + distanceX < 0.0003 && distanceY + distanceZ + distanceX > -0.03)
+            if (distanceY + distanceZ + distanceX < approximation && distanceY + distanceZ + distanceX > -approximation)
             {
                 transform.position = positionBase;
                 aller = true;  

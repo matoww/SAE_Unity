@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 0.5
   positionArrive: {x: 10, y: 10, z: 10}
+  approximation: 0.003
 --- !u!54 &1470430519922600713
 Rigidbody:
   m_ObjectHideFlags: 0
