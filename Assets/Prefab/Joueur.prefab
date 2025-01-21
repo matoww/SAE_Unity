@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4179105530239187659}
   - component: {fileID: -4622144649543969066}
+  - component: {fileID: 857135576987578993}
+  - component: {fileID: -9053159892687394205}
   m_Layer: 0
   m_Name: Joueur
   m_TagString: Player
@@ -62,6 +64,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &857135576987578993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139577078676081119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e768b70e080a234479f9d684f2436c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nbVie: 3
+  respawn: {x: 0, y: 10, z: 0}
+  ecranDeDefaite: {fileID: 0}
+--- !u!114 &-9053159892687394205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139577078676081119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d82b88747a8454a4b877574cae4d6903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpForce: 10
+  bonusEffect: 2
+  malusEffect: 0.5
+  headBounceForce: 50
+  banane: 0
+  point: {fileID: 0}
+  mouseSensitivity: 100
 --- !u!1 &3094657881398307916
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,8 +143,6 @@ GameObject:
   - component: {fileID: 2416053414334463345}
   - component: {fileID: 4114667188299162317}
   - component: {fileID: 4774540498835821445}
-  - component: {fileID: 1603723930549979877}
-  - component: {fileID: 2897950571327432520}
   m_Layer: 0
   m_Name: Yeux
   m_TagString: Player
@@ -206,50 +241,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1603723930549979877
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5067951207679772059}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &2897950571327432520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5067951207679772059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e768b70e080a234479f9d684f2436c38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nbVie: 3
-  respawn: {x: 0, y: 10, z: 0}
-  timerInvicibility: 0
-  ecranDeDefaite: {fileID: 0}
-  vitesseY: 0
 --- !u!1 &5534087642461939367
 GameObject:
   m_ObjectHideFlags: 0

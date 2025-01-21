@@ -11,13 +11,11 @@ TagManager:
   - bonus
   - malus
   - banane
-  - bullet
-  - weapon
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - ground
+  - 
   - Water
   - UI
   - 
