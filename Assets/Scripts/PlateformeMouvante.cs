@@ -8,10 +8,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public Vector3 positionArrive;
     Boolean aller = true;
     public float approximation;
+    public Vector3 rotationVoulu;
+    Vector3 rotationBase;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         positionBase = transform.position;
+        rotationBase = transform.localRotation.eulerAngles;
         if (positionArrive.y == positionBase.y)
         {
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
@@ -42,6 +45,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
             else
             {
                 Vector3 movement = new Vector3(distanceX, distanceY, distanceZ) * velocity * Time.deltaTime;
+                //à améliorer avant utilisation
+                Quaternion rotation = Quaternion.Slerp(this.transform.localRotation,Quaternion.Euler(rotationVoulu),Time.deltaTime*velocity);
+                transform.rotation = rotation;
+
                 transform.Translate(movement);
             }
         }
@@ -58,6 +65,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
             else
             {
                 Vector3 movement = new Vector3(distanceX, distanceY, distanceZ) * velocity * Time.deltaTime;
+                //à améliorer avant utilisation
+                Quaternion rotation = Quaternion.Slerp(this.transform.localRotation, Quaternion.Euler(rotationBase), Time.deltaTime*velocity);
+                transform.rotation = rotation;
+
                 transform.Translate(movement);
             }
         }
