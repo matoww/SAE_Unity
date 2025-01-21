@@ -5,11 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4496deb7-cb17-4a9c-af39-69c7634947c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EnemyAiTutorial (1).cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/NavMeshAreas.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/AnimationCourse/CourseAnimation.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/AnimationCourse/CourseAnimation.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/AnimationCourse/CourseController.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/AnimationCourse/CourseController.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/AnimationIdle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/AnimationIdle/AnimationIdle.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/AnimationIdle/AnimationIdle.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/AnimationIdle/IdleAnimation.fbx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/AnimationIdle/IdleAnimation.fbx.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefab/PlateformeMouvante.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefab/PlateformeMouvante.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefab/ZoneDeSpawn.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefab/ZoneDeSpawn.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Niveau.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Niveau.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/palteforme.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/palteforme.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PlateformeMouvante.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PlateformeMouvante.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Material/New Material 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Material/New Material 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Joueur.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Joueur.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DegatImplementation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DegatImplementation.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MouvementScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MouvementScript.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PersonnageBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PersonnageBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/movement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +43,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/Duterte/unitySAe/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Duterte/unitySAe/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -27,18 +55,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Merging main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.31f1\Editor\Unity.exe" />
@@ -86,7 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1736839651377</updated>
       <workItem from="1736839655092" duration="3109000" />
-      <workItem from="1737465775122" duration="7176000" />
+      <workItem from="1737465775122" duration="7526000" />
     </task>
     <servers />
   </component>
