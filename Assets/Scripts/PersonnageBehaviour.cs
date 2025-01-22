@@ -23,6 +23,7 @@ public class PersonnageBehaviour : MonoBehaviour
     private float minJumpForce;
     private Coroutine currentBonusCoroutine;
     private Coroutine currentMalusCoroutine;
+    private GameObject[] coeurs;
 
 
     void Start()
@@ -37,6 +38,11 @@ public class PersonnageBehaviour : MonoBehaviour
         minSpeed = mouvement.MinSpeed;
         minJumpForce = mouvement.MinJumpForce;
         respawn = this.transform.position;
+        coeurs = new GameObject[3];
+        for (int i = 0; i < 3; i++)
+        {
+            coeurs[i] = GameObject.Find("Coeur" + (i + 1).ToString());
+        }
     }
 
     // Update is called once per frame
@@ -164,24 +170,6 @@ public class PersonnageBehaviour : MonoBehaviour
         {
             OnBodyTouch(collision);
         }
-    }
-
-    public void OnHeadTouched(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ennemie" && timerInvicibility <= 0)
-        {
-            nbVie -= 1;
-            timerInvicibility = 2;
-            ActivateMalus();
-            Debug.Log(nbVie);
-        }
-        if (vitesseY < -10)
-        {
-            nbVie -= 1;
-            timerInvicibility = 2;
-            ActivateMalus();
-            vitesseY = 0;
-        }
         if (nbVie == 0)
         {
             ecranDeDefaite.SetActive(true);
@@ -189,9 +177,34 @@ public class PersonnageBehaviour : MonoBehaviour
             respawnButton.GetComponent<Button>().onClick.AddListener(() =>
             {
                 Respawn.respawnGameObject(gameObject, respawn);
+                for (int i = 0; i < 3 - nbVie; i++)
+                {
+                    coeurs[i + nbVie].SetActive(true);
+                }
                 nbVie = 3;
                 ecranDeDefaite.SetActive(false);
             });
+            Debug.Log("onclickActivé");
+        }
+    }
+
+    public void OnHeadTouched(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ennemie" && timerInvicibility <= 0)
+        {
+            GameObject.Find("Coeur" + nbVie.ToString()).SetActive(false);
+            nbVie -= 1;
+            timerInvicibility = 2;
+            ActivateMalus();
+            Debug.Log(nbVie);
+        }
+        if (vitesseY < -10)
+        {
+            GameObject.Find("Coeur" + nbVie.ToString()).SetActive(false);
+            nbVie -= 1;
+            timerInvicibility = 2;
+            ActivateMalus();
+            vitesseY = 0;
         }
     }
 
@@ -204,27 +217,18 @@ public class PersonnageBehaviour : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Ennemie" && timerInvicibility <= 0)
         {
+            GameObject.Find("Coeur" + nbVie.ToString()).SetActive(false);
             nbVie -= 1;
             timerInvicibility = 2;
             ActivateMalus();
         }
         if (vitesseY < -10)
         {
+            GameObject.Find("Coeur" + nbVie.ToString()).SetActive(false);
             nbVie -= 1;
             timerInvicibility = 2;
            ActivateMalus();
             vitesseY = 0;
-        }
-        if (nbVie == 0)
-        {
-            ecranDeDefaite.SetActive(true);
-            GameObject respawnButton = GameObject.Find("BoutonRespawn");
-            respawnButton.GetComponent<Button>().onClick.AddListener(() =>
-            {
-                Respawn.respawnGameObject(gameObject, respawn);
-                nbVie = 3;
-                ecranDeDefaite.SetActive(false);
-            });
         }
         if (collision.gameObject.tag == "plateformeMouvante")
         {
@@ -242,28 +246,18 @@ public class PersonnageBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ennemie" && timerInvicibility <= 0)
         {
+            GameObject.Find("Coeur" + nbVie.ToString()).SetActive(false);
             nbVie -= 1;
             timerInvicibility = 2;
             StartCoroutine(TemporaryMalusEffect());
         }
         if (vitesseY < -10)
         {
+            GameObject.Find("Coeur" + nbVie.ToString()).SetActive(false);
             nbVie -= 1;
             timerInvicibility = 2;
             vitesseY = 0;
             StartCoroutine(TemporaryMalusEffect());
-        }
-        if (nbVie == 0)
-        {
-            ecranDeDefaite.SetActive(true);
-            GameObject respawnButton = GameObject.Find("BoutonRespawn");
-            respawnButton.GetComponent<Button>().onClick.AddListener(() =>
-            {
-                Respawn.respawnGameObject(gameObject, respawn);
-                nbVie = 3;
-                ecranDeDefaite.SetActive(false);
-            });
-            Debug.Log("onclickActivé");
         }
     }
 
@@ -276,6 +270,10 @@ public class PersonnageBehaviour : MonoBehaviour
             respawnButton.GetComponent<Button>().onClick.AddListener(() =>
             {
                 Respawn.respawnGameObject(gameObject, respawn);
+                for (int i = 0; i < 3 - nbVie; i++)
+                {
+                    coeurs[i + nbVie].SetActive(true);
+                }
                 nbVie = 3;
                 ecranDeDefaite.SetActive(false);
             });

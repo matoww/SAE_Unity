@@ -22,7 +22,6 @@ public class Mouvement : MonoBehaviour
 
    void Start()
     {
-        Debug.Log(maxSpeed);
         maxSpeed = speed * 3;
         maxJumpForce = jumpForce * 3;
         minSpeed = speed / 3;
@@ -101,7 +100,6 @@ public class Mouvement : MonoBehaviour
           
             banane += 1;
             point.setBanane(banane);
-            Debug.Log(banane);
             Destroy(other.gameObject); // Supprime l'objet après l'effet
 
 
