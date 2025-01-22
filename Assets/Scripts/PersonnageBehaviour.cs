@@ -189,7 +189,6 @@ public class PersonnageBehaviour : MonoBehaviour
                 nbVie = 3;
                 ecranDeDefaite.SetActive(false);
             });
-            Debug.Log("onclickActivé");
         }
     }
 
@@ -254,7 +253,7 @@ public class PersonnageBehaviour : MonoBehaviour
             GameObject.Find("Coeur" + nbVie.ToString()).SetActive(false);
             nbVie -= 1;
             timerInvicibility = 2;
-            StartCoroutine(TemporaryMalusEffect());
+            ActivateMalus();
         }
         if (vitesseY < -10)
         {
@@ -262,7 +261,7 @@ public class PersonnageBehaviour : MonoBehaviour
             nbVie -= 1;
             timerInvicibility = 2;
             vitesseY = 0;
-            StartCoroutine(TemporaryMalusEffect());
+            ActivateMalus();
         }
     }
 

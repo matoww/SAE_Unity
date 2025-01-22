@@ -63,7 +63,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &857135576987578993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,8 +77,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbVie: 3
-  respawn: {x: 0, y: 10, z: 0}
   ecranDeDefaite: {fileID: 0}
+  mouvement: {fileID: 0}
+  ecranDeVictoire: {fileID: 0}
 --- !u!114 &-9053159892687394205
 MonoBehaviour:
   m_ObjectHideFlags: 0
