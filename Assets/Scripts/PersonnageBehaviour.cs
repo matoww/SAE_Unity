@@ -2,6 +2,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 
 public class PersonnageBehaviour : MonoBehaviour
@@ -9,6 +11,7 @@ public class PersonnageBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public int nbVie = 3;
     Vector3 respawn;
+    Vector3 start;
     float timerInvicibility = 0;
     public GameObject ecranDeDefaite;
     float vitesseY = 0;
@@ -24,6 +27,7 @@ public class PersonnageBehaviour : MonoBehaviour
     private Coroutine currentBonusCoroutine;
     private Coroutine currentMalusCoroutine;
     private GameObject[] coeurs;
+    public GameObject ecranDeVictoire;
 
 
     void Start()
@@ -38,6 +42,7 @@ public class PersonnageBehaviour : MonoBehaviour
         minSpeed = mouvement.MinSpeed;
         minJumpForce = mouvement.MinJumpForce;
         respawn = this.transform.position;
+        start = this.transform.position;
         coeurs = new GameObject[3];
         for (int i = 0; i < 3; i++)
         {
@@ -281,6 +286,15 @@ public class PersonnageBehaviour : MonoBehaviour
         if(other.gameObject.tag == "SpawnPoint")
         {
             respawn = other.gameObject.transform.position;
+        }
+        if (other.gameObject.tag == "ZoneDeVictoire")
+        {
+            ecranDeVictoire.SetActive(true);
+            GameObject respawnButton = GameObject.Find("BoutonRestart");
+            respawnButton.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            });
         }
     }
     public void OnCollisionExit(Collision collision)

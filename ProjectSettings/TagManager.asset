@@ -11,6 +11,11 @@ TagManager:
   - bonus
   - malus
   - banane
+  - SpawnPoint
+  - plateformeMouvante
+  - terre
+  - bullet
+  - ZoneDeVictoire
   layers:
   - Default
   - TransparentFX
