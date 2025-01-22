@@ -1,10 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class WeaponPickup : MonoBehaviour
 {
+    public TMP_Text interactText; // Référence au texte à afficher
     public GameObject weaponHUD; // Référence au modèle d'arme sur l'écran
-    public Text interactText;   // Référence au texte à afficher
+
     private bool isPlayerNearby = false; // Vérifie si le joueur regarde l'arme
 
     void Start()
@@ -26,7 +27,7 @@ public class WeaponPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = true;
-            interactText.gameObject.SetActive(true);
+            interactText.gameObject.SetActive(true); // Affiche le texte
         }
     }
 
@@ -35,13 +36,13 @@ public class WeaponPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNearby = false;
-            interactText.gameObject.SetActive(false);
+            interactText.gameObject.SetActive(false); // Cache le texte
         }
     }
 
     private void TakeWeapon()
     {
-        weaponHUD.SetActive(true); // Affiche l'arme sur l'écran
+        weaponHUD.SetActive(true); // Affiche l'arme dans le HUD
         interactText.gameObject.SetActive(false); // Cache le texte
         Destroy(gameObject); // Supprime l'arme de la scène
     }
