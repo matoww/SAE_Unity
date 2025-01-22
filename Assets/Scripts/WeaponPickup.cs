@@ -3,15 +3,21 @@ using TMPro;
 
 public class WeaponPickup : MonoBehaviour
 {
-    public TMP_Text interactText; // Référence au texte à afficher
-    public GameObject weaponHUD; // Référence au modèle d'arme sur l'écran
-
-    private bool isPlayerNearby = false; // Vérifie si le joueur regarde l'arme
+    public TMP_Text interactText; // Texte "Press E to Take"
+    public GameObject weaponInHand; // Référence à l’arme dans la main du joueur
+    private bool isPlayerNearby = false; // Vérifie si le joueur est proche
 
     void Start()
     {
-        weaponHUD.SetActive(false); // Cache l'arme dans le HUD au début
-        interactText.gameObject.SetActive(false); // Cache le texte d'interaction au début
+        if (interactText != null)
+        {
+            interactText.gameObject.SetActive(false); // Cache le texte au début
+        }
+
+        if (weaponInHand != null)
+        {
+            weaponInHand.SetActive(false); // Cache l’arme dans la main au début
+        }
     }
 
     void Update()
@@ -42,8 +48,12 @@ public class WeaponPickup : MonoBehaviour
 
     private void TakeWeapon()
     {
-        weaponHUD.SetActive(true); // Affiche l'arme dans le HUD
+        if (weaponInHand != null)
+        {
+            weaponInHand.SetActive(true); // Active l’arme dans la main
+        }
+
         interactText.gameObject.SetActive(false); // Cache le texte
-        Destroy(gameObject); // Supprime l'arme de la scène
+        Destroy(gameObject); // Supprime l’arme de la scène
     }
 }
