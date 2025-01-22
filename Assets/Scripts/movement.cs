@@ -100,6 +100,7 @@ public class Mouvement : MonoBehaviour
           
             banane += 1;
             point.setBanane(banane);
+            other.GetComponent<Collider>().enabled = false;
             Destroy(other.gameObject); // Supprime l'objet après l'effet
 
 
