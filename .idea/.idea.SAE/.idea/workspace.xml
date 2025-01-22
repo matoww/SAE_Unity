@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="54a04788-0425-43b6-b635-52e6b40f1263" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SAE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SAE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/foncedessus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/foncedessus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +100,7 @@
       <workItem from="1737559226606" duration="5092000" />
       <workItem from="1737567712773" duration="175000" />
       <workItem from="1737575596412" duration="8861000" />
-      <workItem from="1737587286236" duration="1265000" />
+      <workItem from="1737587286236" duration="1975000" />
     </task>
     <servers />
   </component>

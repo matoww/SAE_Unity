@@ -1,49 +1,91 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
-public class IA_FonceSurJoueur : MonoBehaviour
+public class foncedessus : MonoBehaviour
 {
-    public Transform joueur; 
-    private NavMeshAgent agent; 
-    private bool joueurDansZone = false; 
+    public float patrolSpeed = 2f;    
+    public float chaseSpeed = 4f;     
+    public float detectionRadius = 5f;  
+    public float stopDistance = 0.5f;   
+    public float patrolWaitTime = 2f;  
+
+    private NavMeshAgent agent;
+    private Transform player;
+    private bool isChasing = false;
+    private bool isPatrolling = false;
 
     void Start()
     {
-        
         agent = GetComponent<NavMeshAgent>();
-
-        if (joueur == null)
-        {
-            Debug.LogError("Le joueur n'est pas assigné!");
-        }
+        agent.speed = patrolSpeed;
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     void Update()
     {
-       
-        if (joueurDansZone)
+        
+        if (Vector3.Distance(transform.position, player.position) < detectionRadius)
         {
-            agent.SetDestination(joueur.position);
+            isChasing = true;
+        }
+        else
+        {
+            isChasing = false;
+        }
+
+        if (isChasing)
+        {
+            ChasePlayer();
+        }
+        else
+        {
+            if (!isPatrolling)
+            {
+                StartCoroutine(Patrol());
+            }
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    void ChasePlayer()
     {
-        if (other.CompareTag("Player"))
+        agent.speed = chaseSpeed;
+        agent.SetDestination(player.position);
+
+
+        if (Vector3.Distance(transform.position, player.position) <= stopDistance)
         {
-            Debug.LogError("Le joueur n'est pas rentré!");
-            joueurDansZone = true;
+            agent.SetDestination(player.position);  
         }
     }
 
- 
-    private void OnTriggerExit(Collider other)
+    IEnumerator Patrol()
     {
-        if (other.CompareTag("Player"))
+        isPatrolling = true;
+
+        while (!isChasing)
         {
-            joueurDansZone = false;
-            agent.ResetPath(); 
+            
+            Vector3 randomPos = RandomNavmeshLocation(20f);
+
+            agent.SetDestination(randomPos);
+            yield return new WaitForSeconds(patrolWaitTime);  
         }
+
+        isPatrolling = false;
+    }
+
+    Vector3 RandomNavmeshLocation(float radius)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += transform.position;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+        
+        return transform.position;  
     }
 }

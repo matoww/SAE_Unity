@@ -314,11 +314,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
---- !u!4 &174077925 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4179105530239187659, guid: 3b6c5ae5ed5c0a54089ea57704e154a0, type: 3}
-  m_PrefabInstance: {fileID: 866949098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &174077926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -678,6 +673,7 @@ GameObject:
   - component: {fileID: 239882391}
   - component: {fileID: 239882396}
   - component: {fileID: 239882397}
+  - component: {fileID: 239882398}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -788,7 +784,7 @@ Transform:
   m_GameObject: {fileID: 239882390}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 219.03, y: -57.06, z: 219.84}
+  m_LocalPosition: {x: 219.03, y: -57.06, z: 238.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -833,7 +829,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938b28bd07e75e24587d4e1a51e12362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joueur: {fileID: 174077925}
+  patrolSpeed: 2
+  chaseSpeed: 4
+  detectionRadius: 20
+  stopDistance: 10
+  patrolWaitTime: 2
+--- !u!195 &239882398
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239882390}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &372036802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1552,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938b28bd07e75e24587d4e1a51e12362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joueur: {fileID: 174077925}
+  patrolSpeed: 2
+  chaseSpeed: 4
+  detectionRadius: 5
+  stopDistance: 0.5
+  patrolWaitTime: 2
 --- !u!1001 &1630512082
 PrefabInstance:
   m_ObjectHideFlags: 0
