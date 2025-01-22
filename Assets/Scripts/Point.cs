@@ -18,6 +18,6 @@ using TMPro;
         }
         public void setBanane(float banane)
         {
-            txtBanane.text =  banane.ToString(); 
+            txtBanane.text =  "X" + banane.ToString(); 
         }
     }

@@ -8,7 +8,7 @@ public class PersonnageBehaviour : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public int nbVie = 3;
-    public Vector3 respawn;
+    Vector3 respawn;
     float timerInvicibility = 0;
     public GameObject ecranDeDefaite;
     float vitesseY = 0;
@@ -36,6 +36,7 @@ public class PersonnageBehaviour : MonoBehaviour
         maxSpeed = mouvement.MaxSpeed;
         minSpeed = mouvement.MinSpeed;
         minJumpForce = mouvement.MinJumpForce;
+        respawn = this.transform.position;
     }
 
     // Update is called once per frame
@@ -163,18 +164,6 @@ public class PersonnageBehaviour : MonoBehaviour
         {
             OnBodyTouch(collision);
         }
-
-        if (collision.gameObject.tag == "plateformeMouvante")
-        {
-            if (transform.parent == null)
-            {
-                GameObject vide = new GameObject("Vide");
-                vide.transform.SetParent(collision.gameObject.transform);
-                Vector3 vector3 = transform.localScale;
-                transform.SetParent(vide.transform);
-                transform.localScale = vector3;
-            }
-        }
     }
 
     public void OnHeadTouched(Collision collision)
@@ -236,6 +225,17 @@ public class PersonnageBehaviour : MonoBehaviour
                 nbVie = 3;
                 ecranDeDefaite.SetActive(false);
             });
+        }
+        if (collision.gameObject.tag == "plateformeMouvante")
+        {
+            if (transform.parent == null)
+            {
+                GameObject vide = new GameObject("Vide");
+                vide.transform.SetParent(collision.gameObject.transform);
+                Vector3 vector3 = transform.localScale;
+                transform.SetParent(vide.transform);
+                transform.localScale = vector3;
+            }
         }
     }
     public void OnBodyTouch(Collision collision)
