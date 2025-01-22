@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54a04788-0425-43b6-b635-52e6b40f1263" name="Changes" comment="" />
+    <list default="true" id="54a04788-0425-43b6-b635-52e6b40f1263" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SAE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SAE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/test.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +19,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BulletBehavior.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/WeaponShoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/foncedessus.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -94,7 +98,8 @@
       <workItem from="1737559150411" duration="46000" />
       <workItem from="1737559226606" duration="5092000" />
       <workItem from="1737567712773" duration="175000" />
-      <workItem from="1737575596412" duration="7568000" />
+      <workItem from="1737575596412" duration="8861000" />
+      <workItem from="1737587286236" duration="1265000" />
     </task>
     <servers />
   </component>
