@@ -16,6 +16,7 @@ TagManager:
   - terre
   - bullet
   - ZoneDeVictoire
+  - arme
   layers:
   - Default
   - TransparentFX
