@@ -277,10 +277,12 @@ public class PersonnageBehaviour : MonoBehaviour
     {
         if(other.gameObject.tag == "ZoneDeMort")
         {
+            Time.timeScale = 0f;
             ecranDeDefaite.SetActive(true);
             GameObject respawnButton = GameObject.Find("BoutonRespawn");
             respawnButton.GetComponent<Button>().onClick.AddListener(() =>
             {
+                Time.timeScale = 1f;
                 Respawn.respawnGameObject(gameObject, respawn);
                 for (int i = 0; i < 3 - nbVie; i++)
                 {
